@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Beyond Ventures - Dubai Scholars' Commerce Magazine</title>
     <style>
         * {
@@ -1565,6 +1565,206 @@
         height: 40vh;
     }
 }
+
+/* Add these media queries to your existing <style> section */
+@media screen and (max-width: 768px) {
+    /* Header adjustments */
+    .site-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.1em;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Navigation adjustments */
+    nav {
+        padding: 0.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    nav a {
+        padding: 0.4rem 1rem;
+        margin: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    /* Content adjustments */
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Team members grid */
+    .team-members {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* VS battle section */
+    .vs-container {
+        flex-direction: column;
+        gap: 4rem;
+        margin: 2rem 0;
+    }
+
+    .vs-divider {
+        position: relative;
+        transform: none;
+        margin: -2rem auto;
+    }
+
+    .changemaker-card:first-child,
+    .changemaker-card:last-child {
+        margin: 0;
+    }
+
+    /* Battle comparison */
+    .battle-comparison > div {
+        grid-template-columns: 1fr;
+    }
+
+    /* Submission buttons */
+    .submission-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Quiz game */
+    #game-container {
+        padding: 1rem;
+    }
+
+    #options button {
+        margin: 0.3rem 0;
+    }
+
+    /* Adjust main content area */
+    main {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+
+    .page {
+        padding: 0;
+    }
+
+    /* Fix horizontal scrolling */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Magazine container */
+    .magazine-container {
+        position: relative;
+        transform: none;
+        left: auto;
+        min-height: 60vh;
+    }
+
+    /* Modal adjustments */
+    .modal-content {
+        width: 95%;
+        padding: 2rem 1rem;
+    }
+
+    .modal-content .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Theme cards */
+    .theme {
+        padding: 1.5rem;
+    }
+
+    .theme img {
+        max-width: 100%;
+    }
+}
+
+/* Additional fixes for very small screens */
+@media screen and (max-width: 380px) {
+    .site-title {
+        font-size: 1.5rem;
+    }
+
+    .school-logo,
+    .beyond-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    nav a {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Fix for iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+    .hero,
+    .magazine-container {
+        min-height: -webkit-fill-available;
+    }
+
+    .chatbot-container {
+        bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Improve touch targets */
+@media (hover: none) and (pointer: coarse) {
+    .button,
+    nav a,
+    .team-member,
+    .theme,
+    .changemaker-card {
+        min-height: 44px;
+        padding: 12px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Fix for notched devices */
+@supports (padding: max(0px)) {
+    .chatbot-container {
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+
+    header {
+        padding-top: max(1rem, env(safe-area-inset-top));
+    }
+}
     </style>
 </head>
 <body>
@@ -2861,4 +3061,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</html>
+                </html>

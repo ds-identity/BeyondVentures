@@ -1553,6 +1553,10 @@
         font-size: 14px;
         line-height: 1.4;
     }
+
+    .chatbot-floating-button {
+        bottom: env(safe-area-inset-bottom, 20px);
+    }
 }
 
 /* Add mobile keyboard handling */
@@ -1722,6 +1726,10 @@
     nav a {
         padding: 0.3rem 0.8rem;
         font-size: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
     }
 }
 
@@ -1996,6 +2004,48 @@
         padding-top: max(1rem, env(safe-area-inset-top));
     }
 }
+
+/* Add to your existing <style> section */
+.chatbot-floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #000051, #1a237e);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.chatbot-floating-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.chatbot-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chatbot-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    background: linear-gradient(135deg, #000051, #1a237e);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -2077,20 +2127,26 @@
             <span class="dot"></span>
         </div>
         <div class="vs-container" style="margin-top: 2rem;">
-            <div class="changemaker-card">
-                <img src="zubair1.jpeg" alt="Zubair Junjunia" class="changemaker-img">
-                <h3 class="changemaker-name">Education Revolution</h3>
-                <p>Discover how Zubair is transforming global education access through technology.</p>
-                <a href="#changemakers" class="button">Read More</a>
-            </div>
-
-            <div class="changemaker-card">
-                <img src="soheil1.jpg" alt="Soheil Var" class="changemaker-img">
-                <h3 class="changemaker-name">Persistence Pays Off</h3>
-                <p>Learn how Soheil turned multiple rejections into stepping stones for success.</p>
-                <a href="#changemakers" class="button">Read More</a>
-            </div>
+    <div class="changemaker-card">
+        <img src="zubair1.jpeg" alt="Zubair Junjunia" class="changemaker-img">
+        <h3 class="changemaker-name">Education Revolution</h3>
+        <p>Discover how Zubair is transforming global education access through technology.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+            <a href="#changemakers" class="button">Read More</a>
+            <a href="https://youtu.be/Wy7elqSieBk?si=D2rKtLY-4gfM7LEj" target="_blank" class="button" style="background-color: #FF0000;">Watch Interview</a>
         </div>
+    </div>
+
+    <div class="changemaker-card">
+        <img src="soheil1.jpg" alt="Soheil Var" class="changemaker-img">
+        <h3 class="changemaker-name">Persistence Pays Off</h3>
+        <p>Learn how Soheil turned multiple rejections into stepping stones for success.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+            <a href="#changemakers" class="button">Read More</a>
+            <a href="https://youtu.be/oOsf-bE0-mE?si=Tj_-oJNy55PIu9F5" target="_blank" class="button" style="background-color: #FF0000;">Watch Interview</a>
+        </div>
+    </div>
+</div>
     </div>
 </div>
 
@@ -2207,7 +2263,7 @@
     <div class="team-member">
         <img src="caroline.jpg" alt="Caroline Jickson" class="profile-pic">
         <h3>Caroline Jickson</h3>
-        <p class="role">Marketing Director</p>
+        <p class="role">Creative Director</p>
         <p>Hey there! I’m Carol, a student at Dubai Scholars with a deep passion for robotics, cinematography, and videography. Whether I’m building and coding robots or crafting compelling visuals, I love blending creativity with technology. Robotics fuels my problem-solving mindset, pushing me to innovate and engineer solutions, while cinematography and videography allow me to tell powerful stories through a different lens. From leading STEM initiatives to capturing moments that inspire, I’m always looking for ways to create, innovate, and make an impact.</p>
     </div>
     
@@ -2216,6 +2272,14 @@
         <h3>Reyaansh Dugad</h3>
         <p class="role">Senior Coordinator</p>
         <p>Reyaansh Dugad is an ambitious economics and finance enthusiast with a strong analytical mindset and a passion for entrepreneurship. Beyond academics, he enjoys exploring his passion for cricket, traveling to new places, and meeting people from diverse backgrounds. A former Head Boy and TEDx organizer, he thrives on leadership and public speaking. At Beyond Ventures, he channels his enthusiasm for finance by managing public relations and ensuring the society’s vision reaches a wider audience.</p>
+    </div>
+    
+    <div class="team-member">
+        <img src="shaina.jpg" alt="Shaina Kamaleesan" class="profile-pic">
+        <h3>Shaina Kamaleesan</h3>
+        <p class="role">Marketing Director</p>
+        <p>Hi everyone! 
+            My name is Shaina Kristen, I’m 15 years old and a student at Dubai Scholars Private School.  I’ve always been fascinated by how the body and mind work, which is why biology and psychology are my favourite subjects. I’m especially passionate about dermatology, neuroscience, and mental health, and love learning how physical and emotional health are connected .Outside academics, I enjoy listening to medical podcasts, watching documentaries, and exploring topics related to health, wellness, and self-care. I’d describe myself as curious, dedicated, and open-minded, always excited to learn and grow.</p>
     </div>
 </div>
     </div>
@@ -2973,61 +3037,39 @@ const chatResponses = {
 // Update the generateResponse function
 function generateResponse(message) {
     const lowerMessage = message.toLowerCase();
-    let response = '';
 
-    // Store conversation context
-    chatResponses.context.conversationHistory.push(message);
-    chatResponses.context.lastQuestion = message;
-
-    // Handle greetings with context
+    // Greetings
     if (lowerMessage.match(/\b(hi|hello|hey|greet)\b/)) {
-        const isReturn = chatResponses.context.conversationHistory.length > 2;
-        return isReturn ? 
-            "Welcome back! Shall we continue our discussion?" :
-            chatResponses.greetings[Math.floor(Math.random() * chatResponses.greetings.length)];
+        return "Hello! I'm Mr.Beyond, your AI assistant for Beyond Ventures! How can I help you today?";
     }
 
-    // Handle topic-specific responses
-    if (lowerMessage.match(/\b(magazine|article|publish)\b/)) {
-        chatResponses.context.lastTopic = 'magazine';
-        response = chatResponses.magazine[Math.floor(Math.random() * chatResponses.magazine.length)];
-        return response + "\n\n" + chatResponses.followUp.magazine[Math.floor(Math.random() * chatResponses.followUp.magazine.length)];
+    // Magazine queries
+    if (lowerMessage.includes('magazine') || lowerMessage.includes('publish')) {
+        return "Our first issue is coming soon! It will feature inspiring stories of young entrepreneurs and innovators. Would you like to know more about submitting your article?";
     }
 
-    // Handle follow-up questions
-    if (lowerMessage.match(/\b(yes|sure|okay|tell me|please)\b/) && chatResponses.context.lastTopic) {
-        switch(chatResponses.context.lastTopic) {
-            case 'magazine':
-                return chatResponses.submission.guidelines.join('\n');
-            case 'submission':
-                return chatResponses.tips.submission.join('\n');
-            case 'themes':
-                return chatResponses.examples.topics.join('\n');
-        }
+    // Team queries
+    if (lowerMessage.includes('team') || lowerMessage.match(/\b(mahin|samyukta|eleanor|caroline|reyaansh)\b/)) {
+        return "Our team includes:\n• Mahin Kashyap (Founder & Editor-in-Chief)\n• Samyukta Shanker (Content Lead)\n• Eleanor Pereira (Logistics & PR)\n• Caroline Jickson (Marketing)\n• Reyaansh Dugad (Senior Coordinator)\n\nWould you like to know more about any team member?";
     }
 
-    // Handle specific questions about writing
-    if (lowerMessage.match(/\b(how|tips|advice)\b/) && lowerMessage.match(/\b(write|writing|article)\b/)) {
-        return "Here are some writing tips:\n" + chatResponses.tips.writing.join('\n');
+    // Submission queries
+    if (lowerMessage.match(/\b(submit|article|write|how|guidelines)\b/)) {
+        return "Here are our submission guidelines:\n• Articles should be 250-350 words\n• Choose from two themes: Global Problem Solving or Fun & Creative Ideas\n• Include relevant images\n• Cite all sources\n\nWould you like the submission form link?";
     }
 
-    // Handle requests for examples
-    if (lowerMessage.match(/\b(example|sample|idea)\b/)) {
-        return "Here are some article ideas:\n" + chatResponses.examples.topics.join('\n');
+    // Quiz queries
+    if (lowerMessage.match(/\b(quiz|game|play|test)\b/)) {
+        return "Try our Business Quiz Challenge! Test your knowledge, compete for high scores, and learn about business concepts. Would you like to start playing?";
     }
 
-    // Add intelligence to topic switching
-    if (chatResponses.context.lastTopic && lowerMessage.match(/\b(different|other|another)\b/)) {
-        const topics = ['magazine', 'submission', 'themes'];
-        const currentIndex = topics.indexOf(chatResponses.context.lastTopic);
-        const nextTopic = topics[(currentIndex + 1) % topics.length];
-        chatResponses.context.lastTopic = nextTopic;
-        return `Let's talk about ${nextTopic}. ` + chatResponses[nextTopic][0];
+    // Themes queries
+    if (lowerMessage.match(/\b(theme|topic|global|creative)\b/)) {
+        return "We have two exciting themes:\n1. Solving Global Problems with Innovative Ideas\n2. Fun and Creative Ideas\n\nWhich theme would you like to know more about?";
     }
 
-    // ...existing response patterns...
-
-    return response || chatResponses.help.join('\n');
+    // Fallback response if no matches
+    return "I can help you with:\n• Magazine information\n• Submission guidelines\n• Team information\n• Quiz game details\n• Theme exploration\n\nWhat would you like to know about?";
 }
 
 // Add typing animation
@@ -3066,17 +3108,17 @@ function addMessage(type, message) {
 
 function toggleChatbot() {
     const chatbot = document.getElementById('chatbot-container');
-    const messages = chatbot.querySelector('.chatbot-messages');
-    const minimize = chatbot.querySelector('.chatbot-minimize');
+    const isHidden = chatbot.style.display === 'none';
     
-    if (messages.style.display === 'none') {
-        messages.style.display = 'flex';
-        chatbot.querySelector('.chatbot-input').style.display = 'flex';
-        minimize.textContent = '−';
+    if (isHidden) {
+        chatbot.style.display = 'block';
+        // Show initial message if it's the first time
+        const messages = chatbot.querySelector('.chatbot-messages');
+        if (!messages.children.length) {
+            addMessage('bot', "Hi! I'm Mr.Beyond, your friendly guide to Beyond Ventures. How can I help you today? 😊");
+        }
     } else {
-        messages.style.display = 'none';
-        chatbot.querySelector('.chatbot-input').style.display = 'none';
-        minimize.textContent = '+';
+        chatbot.style.display = 'none';
     }
 }
 
@@ -3198,8 +3240,8 @@ function addMessage(type, message) {
     }
 }
 </script>
-<!-- Add this HTML just before the closing </body> tag -->
-<div id="chatbot-container" class="chatbot-container">
+<!-- Replace your existing chatbot-container div with this -->
+<div id="chatbot-container" class="chatbot-container" style="display: none;">
     <div class="chatbot-header" onclick="toggleChatbot()">
         <span class="chatbot-title">Mr.Beyond</span>
         <span class="chatbot-minimize">−</span>
@@ -3211,85 +3253,9 @@ function addMessage(type, message) {
     </div>
 </div>
 
-<script>
-// Core chatbot functions
-function sendMessage() {
-    const input = document.getElementById('user-input');
-    const message = input.value.trim();
-    
-    if (message) {
-        addMessage('user', message);
-        input.value = '';
-        
-        setTimeout(() => {
-            const response = generateResponse(message);
-            addMessage('bot', response);
-        }, 500);
-    }
-}
-
-function addMessage(type, message) {
-    const messages = document.querySelector('.chatbot-messages');
-    if (!messages) return;
-
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', `${type}-message`);
-    
-    if (type === 'bot') {
-        messageDiv.textContent = '...';
-        messages.appendChild(messageDiv);
-        messages.scrollTop = messages.scrollHeight;
-        
-        let i = 0;
-        const text = message;
-        const typeSpeed = 30;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                messageDiv.textContent = text.substring(0, i + 1);
-                i++;
-                setTimeout(typeWriter, typeSpeed);
-            }
-        }
-        
-        setTimeout(typeWriter, 500);
-    } else {
-        messageDiv.textContent = message;
-        messages.appendChild(messageDiv);
-    }
-    
-    messages.scrollTop = messages.scrollHeight;
-}
-
-function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
-}
-
-function toggleChatbot() {
-    const chatbot = document.getElementById('chatbot-container');
-    const messages = chatbot.querySelector('.chatbot-messages');
-    const minimize = chatbot.querySelector('.chatbot-minimize');
-    const input = chatbot.querySelector('.chatbot-input');
-    
-    if (messages.style.display === 'none') {
-        messages.style.display = 'flex';
-        input.style.display = 'flex';
-        minimize.textContent = '−';
-    } else {
-        messages.style.display = 'none';
-        input.style.display = 'none';
-        minimize.textContent = '+';
-    }
-}
-
-// Initialize chatbot
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        addMessage('bot', "Hi! I'm Mr.Beyond, your friendly guide to Beyond Ventures. How can I help you today? 😊");
-    }, 1000);
-});
-</script>
+<!-- Add this new floating button -->
+<div id="chatbot-button" class="chatbot-floating-button" onclick="toggleChatbot()">
+    <img src="V.png" alt="Mr.Beyond" class="chatbot-avatar">
+</div>
 </body>
 </html>
